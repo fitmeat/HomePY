@@ -1,7 +1,6 @@
 class Model:
     
     phone_book = []
-    path = 'phone_book_oop/phone_book.txt'
 
     def __init__(self, path):
         self.path = path

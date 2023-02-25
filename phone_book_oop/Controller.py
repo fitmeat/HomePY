@@ -1,8 +1,9 @@
-import View
+from View import View
 from Model import Model
 
 def start():
     pb = Model('phone_book_oop/phone_book.txt')
+    vi = View()
     while True:
         button = View.menu()
         match button:
@@ -12,28 +13,28 @@ def start():
                 pb.save_file()
             case 3:
                 show = pb.get()
-                View.show_contact(show)
+                vi.show_contact(show)
             case 4:
-                add = View.input_new_contact()
+                add = vi.input_new_contact()
                 pb.add(add)
             case 5:
                 show = pb.get()
-                View.show_contact(show)
-                ind = View.get_ind()
-                contact = View.input_new_contact()
+                vi.show_contact(show)
+                ind = vi.get_ind()
+                contact = vi.input_new_contact()
                 name = pb.get_name(ind)
-                if View.confirm('изменить', name):
+                if vi.confirm('изменить', name):
                     pb.change_contact(ind, contact)
             case 6:
-                find_option = View.find_contact()
+                find_option = vi.find_contact()
                 show = pb.find(find_option)
-                View.show_contact(show)
+                vi.show_contact(show)
             case 7:
                 show = pb.get()
-                View.show_contact(show)
-                ind = View.get_ind()
-                name = pb.get_name()
-                if View.confirm('удалить', name):
+                vi.show_contact(show)
+                ind = vi.get_ind()
+                name = pb.get_name(ind)
+                if vi.confirm('удалить', name):
                     pb.delete(ind)
             case 8:
                 print('До свидания!')
